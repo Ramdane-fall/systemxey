@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SystemXëy.sn - Connexion Talents & Entreprises</title>
+    <style>
+        /* ===== CSS ===== */
+        :root {
+            --primary-color: #1E5F8C;
+            --secondary-color: #F7931E;
+            --light-color: #F5F5F5;
+            --dark-color: #333333;
+            --success-color: #28a745;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            color: var(--dark-color);
+        }
+
+        h1, h2, h3 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px 0;
+        }
+
+        /* Header */
+        header {
+            background-color: white;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+        }
+
+        .logo  {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo-img {
+            height: 50px;
+            width: auto;
+        }
+
+        .logo-text {
+            font-size: 1.8rem;
+            font-weight: bold;
+        }
+
+        .logo-text span {
+            color: var(--secondary-color);
+        }
+
+        @media (max-width: 768px) {
+            .logo-img {
+                height: 40px;
+            }
+            .logo-text {
+                font-size: 1.5rem;
+            }
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+
+        nav ul li {
+            margin-left: 20px;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: var(--dark-color);
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        nav ul li a:hover {
+            color: var(--secondary-color);
+        }
+
+        .auth-buttons .btn {
+            margin-left: 10px;
+        }
+
+        /* Boutons */
+        .btn {
+            display: inline-block;
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-weight: bold;
+            text-decoration: none;
+            transition: all 0.3s;
+            cursor: pointer;
+            border: none;
+        }
+
+        .btn-primary {
+            background-color: var(--primary-color);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background-color: #154269;
+        }
+
+        .btn-secondary {
+            background-color: var(--secondary-color);
+            color: white;
+        }
+
+        .btn-secondary:hover {
+            background-color: #e07e0c;
+        }
+
+        .btn-outline {
+            border: 2px solid var(--primary-color);
+            color: var(--primary-color);
+            background: transparent;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(30, 95, 140, 0.8), rgba(30, 95, 140, 0.9));
+            color: white;
+            text-align: center;
+            padding: 80px 0;
+        }
+
+        .hero h1 {
+            font-size: 2.5rem;
+            color: white;
+            margin-bottom: 20px;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 30px;
+        }
+
+        .cta-buttons {
+            margin-bottom: 40px;
+        }
+
+        .stats-container {
+            display: flex;
+            justify-content: space-around;
+            max-width: 800px;
+            margin: 40px auto 0;
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-item h3 {
+            font-size: 2.5rem;
+            color: white;
+            margin-bottom: 5px;
+        }
+
+        /* Features */
+        .features {
+            padding: 60px 0;
+            background-color: var(--light-color);
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .feature-card {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            text-align: center;
+            transition: transform 0.3s;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .feature-icon {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            color: var(--secondary-color);
+        }
+
+        /* Sections */
+        .section {
+            padding: 60px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        /* Project Banner */
+        .project-banner {
+            background-color: var(--secondary-color);
+            color: white;
+            text-align: center;
+            padding: 50px 0;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--dark-color);
+            color: white;
+            padding: 50px 0 20px;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+
+        .footer-logo {
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+        }
+
+        .footer-links h3 {
+            color: white;
+            margin-bottom: 20px;
+        }
+
+        .footer-links ul {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+
+        .footer-links a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: var(--secondary-color);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .header-container {
+                flex-direction: column;
+            }
+
+            nav ul {
+                margin: 20px 0;
+            }
+
+            .auth-buttons {
+                margin-top: 20px;
+            }
+
+            .stats-container {
+                flex-direction: column;
+            }
+
+            .stat-item {
+                margin-bottom: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- ===== HTML ===== -->
+    <header>
+        <div class="container header-container">
+           <div class="logo">
+                <img src="logo-systemxey.png" alt="Logo SystemXëy.sn" class="logo-img">
+                <span class="logo-text">SystemX<span>ëy</span>.sn</span>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#" class="active">Accueil</a></li>
+                    <li><a href="#etudiants">Étudiants</a></li>
+                    <li><a href="#recruteurs">Recruteurs</a></li>
+                    <li><a href="#universites">Universités</a></li>
+                    <li><a href="#temoignages">Réussites</a></li>
+                    <li><a href="#ressources">Ressources</a></li>
+                </ul>
+            </nav>
+            <div class="auth-buttons">
+                <a href="#" class="btn btn-outline">Connexion</a>
+                <a href="#" class="btn btn-primary">Inscription</a>
+            </div>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container">
+            <h1>Connectez les talents de demain aux opportunités d'aujourd'hui</h1>
+            <p>La plateforme qui rapproche les diplômés sénégalais des opportunités professionnelles</p>
+            <div class="cta-buttons">
+                <a href="#etudiants" class="btn btn-primary">Je suis étudiant</a>
+                <a href="#recruteurs" class="btn btn-secondary">Je suis recruteur</a>
+            </div>
+            <div class="stats-container">
+                <div class="stat-item">
+                    <h3>5000+</h3>
+                    <p>Étudiants inscrits</p>
+                </div>
+                <div class="stat-item">
+                    <h3>350+</h3>
+                    <p>Entreprises partenaires</p>
+                </div>
+                <div class="stat-item">
+                    <h3>15</h3>
+                    <p>Universités collaboratrices</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="etudiants" class="section features">
+        <div class="container">
+            <h2 class="section-title">Espace Étudiants</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">👤</div>
+                    <h3>Profil personnalisé</h3>
+                    <p>Créez un profil détaillé pour mettre en valeur vos compétences et vos projets.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">💼</div>
+                    <h3>Offres adaptées</h3>
+                    <p>Accédez à des offres d'emploi et de stages qui correspondent à votre profil.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">📄</div>
+                    <h3>Documents facilités</h3>
+                    <p>Téléchargez facilement votre CV, portfolio et lettres de motivation.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="recruteurs" class="section">
+        <div class="container">
+            <h2 class="section-title">Espace Recruteurs</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">🔍</div>
+                    <h3>Recherche Avancée</h3>
+                    <p>Trouvez les candidats idéaux par compétences, université ou domaine d'étude.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">📢</div>
+                    <h3>Offres Ciblées</h3>
+                    <p>Publiez des offres d'emploi et de stage qui atteignent les bons talents.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🎥</div>
+                    <h3>Entretiens Virtuels</h3>
+                    <p>Organisez et menez des entretiens vidéo directement sur la plateforme.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="project-banner">
+        <div class="container">
+            
+            <p>Notre vision pour l'insertion professionnelle des jeunes diplômés sénégalais</p>
+            
+            <a href="#" class="btn btn-outline">En savoir plus</a>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-about">
+                    <div class="footer-logo">SystemX<span>ëy</span>.sn</div>
+                    <p>La plateforme de référence pour l'emploi des jeunes diplômés au Sénégal</p>
+                </div>
+                <div class="footer-links">
+                    <h3>Liens rapides</h3>
+                    <ul>
+                        <li><a href="#">Comment ça marche</a></li>
+                        <li><a href="#">Confidentialité</a></li>
+                        <li><a href="#">Conditions d'utilisation</a></li>
+                    </ul>
+                </div>
+                <div class="footer-contact">
+                    <h3>Contact</h3>
+                    <p>contact@systemxey.sn</p>
+                    <p>+221 33 123 45 67</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 SystemXëy.sn - Tous droits réservés</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ===== JavaScript ===== -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Animation au défilement
+            const animateOnScroll = () => {
+                const elements = document.querySelectorAll('.feature-card');
+                elements.forEach(element => {
+                    const elementPosition = element.getBoundingClientRect().top;
+                    const screenPosition = window.innerHeight / 1.3;
+                    
+                    if(elementPosition < screenPosition) {
+                        element.style.opacity = '1';
+                        element.style.transform = 'translateY(0)';
+                    }
+                });
+            };
+
+            // Initialiser l'état des éléments animés
+            document.querySelectorAll('.feature-card').forEach(card => {
+                card.style.opacity = '0';
+                card.style.transform = 'translateY(20px)';
+                card.style.transition = 'all 0.6s ease-out';
+            });
+
+            // Écouteur d'événement pour le défilement
+            window.addEventListener('scroll', animateOnScroll);
+            animateOnScroll(); // Exécuter une première fois au chargement
+
+            // Navigation lisse
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        window.scrollTo({
+                            top: target.offsetTop - 100,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+
+            // Gestion du menu actif
+            const sections = document.querySelectorAll('section');
+            const navLinks = document.querySelectorAll('nav ul li a');
+
+            window.addEventListener('scroll', () => {
+                let current = '';
+                sections.forEach(section => {
+                    const sectionTop = section.offsetTop;
+                    const sectionHeight = section.clientHeight;
+                    if (pageYOffset >= (sectionTop - 150)) {
+                        current = section.getAttribute('id');
+                    }
+                });
+
+                navLinks.forEach(link => {
+                    link.classList.remove('active');
+                    if (link.getAttribute('href') === `#${current}`) {
+                        link.classList.add('active');
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
